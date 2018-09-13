@@ -1,0 +1,16 @@
+---
+layout: default
+---
+
+{% for post in paginator.posts %}
+  <article class="content">
+    <header>
+      <a href="{{ post.url }}">
+        <time datetime="{{ post.date | date: "%Y-%m-%d" }}">
+          {{ post.date | date: "%Y-%m-%d" }}
+        </time>
+      </a>
+    </header>
+    {{ post.content }}
+  </article>
+{% endfor %}

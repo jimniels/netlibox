@@ -1,0 +1,5 @@
+build-*
+.sass-cache
+.jekyll-metadata
+src/_posts
+.env

@@ -1,0 +1,16 @@
+title: slog
+source: .
+destination: ../build-site
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+permalink: /:title-:short_year:month:day
+markdown: kramdown
+paginate: 50
+paginate_path: "/p/:num"
+plugins:
+  - jekyll-paginate
+defaults:
+  - scope:
+      path: "" # an empty string here means all files in the project
+    values:
+      layout: "default"

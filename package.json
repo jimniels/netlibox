@@ -1,0 +1,31 @@
+{
+  "name": "netlibox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "get-posts": "node ./scripts/get-posts-from-dropbox.js",
+    "start": "npm run get-posts && cd ./src && bundle exec jekyll serve",
+    "start-netlify-functions": "netlify-lambda serve ./src/_netlify-functions",
+    "build": "npm run get-posts && npm run build-netlify-functions && cd ./src && bundle exec jekyll build",
+    "build-netlify-functions": "netlify-lambda build ./src/_netlify-functions",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jimniels/slog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jimniels/slog/issues"
+  },
+  "homepage": "https://github.com/jimniels/slog#readme",
+  "devDependencies": {
+    "dotenv": "^6.0.0",
+    "dropbox": "^4.0.5",
+    "fs-extra": "^6.0.1",
+    "isomorphic-fetch": "^2.2.1",
+    "netlify-lambda": "^0.4.0"
+  }
+}
