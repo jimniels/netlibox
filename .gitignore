@@ -1,4 +1,5 @@
-build-*
+build*
+Gemfile.lock
 .sass-cache
 .jekyll-metadata
 src/_posts
