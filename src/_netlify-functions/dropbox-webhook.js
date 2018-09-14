@@ -2,18 +2,6 @@ require("dotenv").load();
 require("isomorphic-fetch");
 
 exports.handler = function(event, context, callback) {
-  // If we don't know what build hook URL we're hitting, this is useless.
-  if (!process.env.NETLIFY_BUILD_HOOK_URL) {
-    const msg =
-      "Failed: the `NETLIFY_BUILD_HOOK_URL` environment variable is missing.";
-    callback(null, {
-      statusCode: 200,
-      body: msg
-    });
-    console.log(msg);
-    return;
-  }
-
   const { headers, queryStringParameters } = event;
 
   // Dropbox hits this endpoint once to verify the app will respond to it.
@@ -38,18 +26,30 @@ exports.handler = function(event, context, callback) {
     // We'll verify that it's from dropbox by checking for a specific header
     // (we *could* verify this more, but this is probably good for now)
   } else if (headers["x-dropbox-signature"]) {
-    const msg =
-      "Success: webhook received from Dropbox and forwarded to netlify!";
-    fetch("https://api.netlify.com/build_hooks/5b0588070733d56d23fdf3c7", {
-      method: "POST",
-      body: ""
-    }).then(res => {
+    // First make sure we even have our build hook URL. If we do, then forward
+    // the dropbox webhook to our netlify webhook. Otherwise, no dice.
+    if (process.env.NETLIFY_BUILD_HOOK_URL) {
+      const msg =
+        "Success: webhook received from Dropbox and forwarded to netlify!";
+      fetch(process.env.NETLIFY_BUILD_HOOK_URL, {
+        method: "POST",
+        body: ""
+      }).then(res => {
+        callback(null, {
+          statusCode: 200,
+          body: msg
+        });
+        console.log(msg);
+      });
+    } else {
+      const msg =
+        "Failed: the `NETLIFY_BUILD_HOOK_URL` environment variable is missing.";
       callback(null, {
         statusCode: 200,
         body: msg
       });
       console.log(msg);
-    });
+    }
 
     // otherwise just echo back
   } else {
