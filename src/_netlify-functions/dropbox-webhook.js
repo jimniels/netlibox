@@ -1,6 +1,21 @@
+require("dotenv").load();
 require("isomorphic-fetch");
 
+const { env: { NETLIFY_BUILD_HOOK_URL } = process;
+
 exports.handler = function(event, context, callback) {
+  // If we don't know what build hook URL we're hitting, this is useless.
+  if (!NETLIFY_BUILD_HOOK_URL) {
+    const msg =
+      "Failed: the `NETLIFY_BUILD_HOOK_URL` environment variable is missing.";
+    callback(null, {
+      statusCode: 200,
+      body: msg
+    });
+    console.log(msg);
+    return;
+  }
+
   const { headers, queryStringParameters } = event;
 
   // Dropbox hits this endpoint once to verify the app will respond to it.
