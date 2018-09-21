@@ -1,0 +1,68 @@
+/* Pay no attention to whether this is a "best practice" for writing styles
+   this is purely for the purpose of a simple demo. */
+html {
+  font-size: 1em;
+}
+body {
+  font-family: Verdana, "Helvetica Neue", sans-serif;
+  line-height: 1.5;
+  max-width: 35rem;
+  width: 90%;
+  margin: 0 auto;
+  color: #444;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid;
+}
+a:hover {
+  color: #000;
+  background: rgba(0, 0, 0, 0.05);
+}
+time a {
+  border-bottom: none;
+  opacity: 0.25;
+}
+time a:hover {
+  opacity: 0.75;
+  border-bottom: 1px solid;
+}
+main h1,
+main h2,
+main h3,
+main h4 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.0125rem;
+}
+blockquote {
+  border-left: 1px solid #999;
+  margin: 0;
+  padding-left: calc(1.618rem / 2);
+}
+article {
+  margin-bottom: calc(1.618rem * 3);
+}
+.site-header {
+  margin-bottom: calc(1.618rem * 3);
+  padding: calc(1.618rem / 2) 0;
+}
+.site-header a {
+  opacity: 0.25;
+  border-bottom: none;
+  margin-right: 5px;
+}
+.site-header a:hover {
+  opacity: 1;
+  background: none;
+}
+.site-header h1 a:hover {
+  border-bottom: 1px solid;
+}
+footer {
+  margin: 120px 0 10px;
+  opacity: 0.5;
+  font-size: 0.75rem;
+  text-align: center;
+}
