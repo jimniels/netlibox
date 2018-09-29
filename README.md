@@ -28,7 +28,9 @@ In order to get a similar setup, you’ll have to do the following:
 
 Once you've done all this, you should be able to create a markdown file in Dropbox and see it get deployed to your Netlify site's URL.
 
-**IMPORTANT** this project is setup to use Jekyll, which means you must use Jekyll’s naming convention for your text files in Dropbox. That means your folder should look something like:
+### Note: File Structure
+
+This project is setup to use Jekyll, which means you must use Jekyll’s naming convention for your text files in Dropbox. That means your folder should look something like:
 
 ```
 dropbox-app-folder/
@@ -38,4 +40,8 @@ dropbox-app-folder/
   - 2018-09-08-isnt-life-great.md
 ```
 
-Also, for what it’s worth, this site isn't doing anything more than reading the content in each file and spitting it out into an HTML page. If you want to leverage [front-matter](https://jekyllrb.com/docs/front-matter/)
+### Note: Post Metadata
+
+This site isn't doing anything more than reading the content of each plain-text markdown file and spitting it out into HTML pages. None of the posts have extra metadata in them. They are just content. However, additional/overriding metadata is possible by using [front-matter](https://jekyllrb.com/docs/front-matter/). 
+
+Because this example repo is using Jekyll, you could write YAML front matter in each markdown file and that would be parsed by Jekyll at build time and become available in the site template files. However, that metadata is optional in each `.md` file and this repo's templates do not use any. With that said, `post.date` and `post.url` are derived from each file name (i.e. `2018-01-08-my-post-slug.md`) which is a convention in Jekyll.
