@@ -6,11 +6,11 @@
 # Once you get your site's `/dropbox-webhook` path verified webhook URI in the
 # Dropbox API, you'll want to delete this particular redirect and then uncomment
 # the one below it, as we won't need our function endpoint anymore.
-# [[redirects]]
-#   from = "/dropbox-webhook"
-#   to = "/.netlify/functions/dropbox-webhook"
-#   status = 200
 [[redirects]]
   from = "/dropbox-webhook"
-  to = "https://api.netlify.com/build_hooks/5b9bce1a02ed83494cbf1e58"
+  to = "/.netlify/functions/dropbox-webhook"
   status = 200
+# [[redirects]]
+#   from = "/dropbox-webhook"
+#   to = "https://api.netlify.com/build_hooks/5b9bce1a02ed83494cbf1e58"
+#   status = 200
