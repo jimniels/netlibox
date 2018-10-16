@@ -1,6 +1,6 @@
 # Netlibox
 
-Netlify + Dropbox as a blogging platform. Read the [@TODO associated blog post](http://google.com).
+Netlify + Dropbox as a blogging platform. Read the [associated blog post on Netlify’s blog](https://www.netlify.com/blog/2018/10/15/combining-netlify-with-dropbox-for-a-one-click-publishing-process/).
 
 ## How To
 
