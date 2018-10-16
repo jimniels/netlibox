@@ -26,7 +26,7 @@ These technologies work in concert to cut even more steps out of my process, mak
 
 First, I use Dropbox to manage a bunch of plain-text markdown files. Why Dropbox? Because of cross-platform sync. I can edit a plain-text markdown file on my laptop, a mobile device, or just about anywhere, and when that update is synced to Dropbox, I can configure a webhook to be sent from Dropbox to Netlify, triggering a new build. Then, my build process fetches my plain-text markdown files from Dropbox and builds my static site with the most up-to-date content.
 
-In other words, the simple act of “saving” a file kicks off a process which builds and publishes my site to the web with the latest content. When I update content, I don’t even have to _think_ about committing, building, or deploying my site. I merely edit and save plain-text files. With Netlify, my production site is a function of my content: plain-text files. A picture is worth a thousand words, so allow me to illustrate:
+In other words, the simple act of “saving” a file kicks off a process which builds and publishes my site to the web with the latest content. When I update content, I don’t even have to think about committing, building, or deploying my site. I merely edit and save plain-text files. With Netlify, my production site is a function of my content: plain-text files. A picture is worth a thousand words, so allow me to illustrate:
 
 ![Graphic of process for editing and publishing content from Dropbox to Netlify](https://i.imgur.com/SNXUKF5.png)
 
