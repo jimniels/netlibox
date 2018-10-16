@@ -44,21 +44,14 @@ blockquote {
 article {
   margin-bottom: calc(1.618rem * 3);
 }
-.site-header {
+header {
   margin-bottom: calc(1.618rem * 3);
   padding: calc(1.618rem / 2) 0;
 }
-.site-header a {
-  opacity: 0.25;
-  border-bottom: none;
-  margin-right: 5px;
-}
-.site-header a:hover {
-  opacity: 1;
-  background: none;
-}
-.site-header h1 a:hover {
-  border-bottom: 1px solid;
+header small {
+  font-size: 50%;
+  font-weight: normal;
+  display: block;
 }
 footer {
   margin: 120px 0 10px;
