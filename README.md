@@ -25,7 +25,8 @@ Netlify + Dropbox as a blogging platform. Read the [@TODO associated blog post](
   - Local `.env` file
     - Replace the value of `NETLIFY_BUILD_HOOK_URL`
 - Open the app console in Dropbox and add the `dropbox-webhook` function URL that Netlify created for us.
-  - This should match a pattern like `https://YOUR_SITE_SUBDOMAIN.netlify.com/.netlify/functions/dropbox-webhook`. You can verify this function URL is live by going to "Functions" in your site in Netlify. You should see a function named `dropbox-webhook.js` and if you click on it, you'll be able to see the function URL endpoint.
+  - This should match a pattern like `https://YOUR_SITE_SUBDOMAIN.netlify.com/.netlify/functions/dropbox-webhook`
+  - You can verify this function URL is live by going to "Functions" in your site in Netlify. You should see a function named `dropbox-webhook.js` and if you click on it, you'll be able to see the function URL endpoint.
 
 ![final-view](https://user-images.githubusercontent.com/1316441/46992107-c9592f00-d0c5-11e8-8a1c-fa751765a402.png)
 
