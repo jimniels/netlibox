@@ -75,7 +75,9 @@ This is the point at which you might think “well, this whole JAMstack thing is
 
 So, in my use case, I was able to write [my own function endpoint](https://github.com/jimniels/netlibox/blob/master/src/_netlify-functions/dropbox-webhook.js) to handle the verification request. Once the verification request is handled by my Netlify function, Dropbox will start sending `POST` requests to it. Then I merely forward those to the webhook URI Netlify gave me for triggering builds. In essence, the logic is:
 
-- My custom endpoint (`https://netlibox.netlify.com/.netlify/functions/dropbox-webhook`) gets pinged by Dropbox - Is this a verification request? Send a response to Dropbox in the format it expects to verify the request. - Otherwise, forward the request to my webhook URI generated in Netlify, which triggers a build.
+- My custom endpoint (`https://netlibox.netlify.com/.netlify/functions/dropbox-webhook`) gets pinged by Dropbox
+  - Is this a verification request? Send a response to Dropbox in the format it expects to verify the request.
+  - Otherwise, forward the request to my webhook URI generated in Netlify, which triggers a build.
 
 ## Conclusion
 
