@@ -83,6 +83,6 @@ So, in my use case, I was able to write [my own function endpoint](https://githu
 
 Netlify is amazing for many reasons, but in this particular case, it gave me tools that previously would’ve been too complicated for me to setup and maintain on my own. Because I now have these additional tools, the size of what’s possible for me to build on my own has increased. This is one of the reason I love Netlify: it grows the possibilities for me to create whatever I can envision.
 
-In this particular case, Netlify gives me control over my build process such that I can abstract my content from my code then pull it in at build time. On top of that, I can automate the triggering of builds based on when a file is edited or saved, so I don’t have to worry about building/deploying a website. I just create and edit plain-text markdown files, and I can trust the current state of those files at any point in time represents my live website.
+In this particular case, Netlify gives me control over my build process such that I can abstract my content from my code then pull it in at build time. On top of that, I can automate the triggering of builds based on when a file is edited or saved, so I don’t have to worry about building/deploying a website. With Netlify, I can create and edit plain-text markdown files then trust that the current state of those files at any point in time represents my live website.
 
 Checkout [Netlibox on Github](https://github.com/jimniels/netlibox) to learn more or try this out yourself.
