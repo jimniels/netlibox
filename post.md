@@ -1,4 +1,4 @@
-# TITLE @TODO
+# Combining Netlify with Dropbox For a One-Click Publishing Process
 
 My current process for writing and publishing content to the web using a static site generator looks like this:
 
@@ -9,9 +9,9 @@ My current process for writing and publishing content to the web using a static 
 5. Push changes to remote repo
 6. Changes are automatically deployed to live site
 
-This process works pretty well, but I’ve been searching for an even more low-friction process. 
+This process works pretty well, but I’ve been searching for an even more low-friction process.
 
-When it comes to writing for the web and managing content, I love plain-text files written in markdown. For me, there’s nothing more simple, portable, longevous, or easily editable across operating systems and devices. 
+When it comes to writing for the web and managing content, I love plain-text files written in markdown. For me, there’s nothing more simple, portable, longevous, or easily editable across operating systems and devices.
 
 I found myself in a situation where I began asking: look I have a collection of plain text files here which represent the state of my blog. When I create a new text file (or edit an existing one) and then save it, why can’t that be the equivalent of hitting “Publish”? Well I’m here to tell you it can.
 
@@ -26,7 +26,7 @@ These technologies work in concert to cut even more steps out of my process, mak
 
 First, I use Dropbox to manage a bunch of plain-text markdown files. Why Dropbox? Because of cross-platform sync. I can edit a plain-text markdown file on my laptop, a mobile device, or just about anywhere, and when that update is synced to Dropbox, I can configure a webhook to be sent from Dropbox to Netlify, triggering a new build. Then, my build process fetches my plain-text markdown files from Dropbox and builds my static site with the most up-to-date content.
 
-In other words, the simple act of “saving” a file kicks off a process which builds and publishes my site to the web with the latest content. When I update content, I don’t even have to *think* about committing, building, or deploying my site. I merely edit and save plain-text files. With Netlify, my production site is a function of my content: plain-text files. A picture is worth a thousand words, so allow me to illustrate:
+In other words, the simple act of “saving” a file kicks off a process which builds and publishes my site to the web with the latest content. When I update content, I don’t even have to _think_ about committing, building, or deploying my site. I merely edit and save plain-text files. With Netlify, my production site is a function of my content: plain-text files. A picture is worth a thousand words, so allow me to illustrate:
 
 ![Graphic of process for editing and publishing content from Dropbox to Netlify](https://i.imgur.com/SNXUKF5.png)
 
@@ -43,7 +43,7 @@ You can dive right into the code behind how this works by looking at my simple s
 
 ## The Nuts and Bolts
 
-I briefly covered what technologies I’m using to achieve my simplified process for writing and publishing content to the web, but allow me to expand a little more. 
+I briefly covered what technologies I’m using to achieve my simplified process for writing and publishing content to the web, but allow me to expand a little more.
 
 ### Git + Static Site Generator (Github + Jekyll)
 
@@ -51,7 +51,7 @@ For my static site, I have a git repo in Github where I store the HTML, CSS, Jav
 
 To generate a site, you’ll need some framework for generating a static site. You could use anything you want here, but for [my example](https://github.com/jimniels/netlibox), I use [Jekyll](https://jekyllrb.com) because its probably the most familiar to the most people (plus its easy to setup with little configuration).
 
-The key difference here is that, rather than have a `_posts` folder with a bunch of markdown files ([as dictated by Jekyll]((https://jekyllrb.com/docs/posts/))) directly in my git repo, I create that folder and its contents at build time by pulling all my plain-text markdown files from Dropbox. This is done via [a custom node script](https://github.com/jimniels/netlibox/blob/master/scripts/get-posts-from-dropbox.js) that gets run before  Jekyll does its thing. For example, rather than your build command being `jekyll build` you would do something like `node fetch-posts.js && jekyll build`.
+The key difference here is that, rather than have a `_posts` folder with a bunch of markdown files ([as dictated by Jekyll](<(https://jekyllrb.com/docs/posts/)>)) directly in my git repo, I create that folder and its contents at build time by pulling all my plain-text markdown files from Dropbox. This is done via [a custom node script](https://github.com/jimniels/netlibox/blob/master/scripts/get-posts-from-dropbox.js) that gets run before Jekyll does its thing. For example, rather than your build command being `jekyll build` you would do something like `node fetch-posts.js && jekyll build`.
 
 ### Dropbox + Netlify
 
@@ -69,15 +69,13 @@ Dropbox requires you to [register your URI via a “verification request”](htt
 > The first request to your new webhook URI will be a verification request to confirm that Dropbox is communicating with the right service.
 > The verification request will be a GET request with a challenge parameter, which is a random string...Your app should echo back the challenge parameter as the body of its response. Once Dropbox receives a valid response, the endpoint is considered to be a valid webhook, and Dropbox will begin sending notifications of file changes.
 
-In other words, Dropbox wants to know that the URI you enter to receive HTTP requests is expecting these requests and that you, therefore, control the endpoint. The incoming webhook URI that Netlify gives you cannot do that. It merely listens for a `POST` request, then triggers a build if it gets one. But Dropbox won’t send a `POST` request until it verifies the endpoint by getting a response it expects. So now what? 
+In other words, Dropbox wants to know that the URI you enter to receive HTTP requests is expecting these requests and that you, therefore, control the endpoint. The incoming webhook URI that Netlify gives you cannot do that. It merely listens for a `POST` request, then triggers a build if it gets one. But Dropbox won’t send a `POST` request until it verifies the endpoint by getting a response it expects. So now what?
 
 This is the point at which you might think “well, this whole JAMstack thing is great, but you’ll always find yourself needing a server for something.” But guess what? Netlify can solve this problem for you with its [Functions feature](https://www.netlify.com/docs/functions/) which “opens a world of possibilities for running on-demand, server-side code without having to run a dedicated server”. The best part is Functions are free below a certain usage tier, which is [125k requests/month](https://www.netlify.com/pricing/) at the time of this writing (a limit I do not plan on hitting for Dropbox notifications).
 
 So, in my use case, I was able to write [my own function endpoint](https://github.com/jimniels/netlibox/blob/master/src/_netlify-functions/dropbox-webhook.js) to handle the verification request. Once the verification request is handled by my Netlify function, Dropbox will start sending `POST` requests to it. Then I merely forward those to the webhook URI Netlify gave me for triggering builds. In essence, the logic is:
 
-- My custom endpoint (`https://netlibox.netlify.com/.netlify/functions/dropbox-webhook`) gets pinged by Dropbox
-	- Is this a verification request? Send a response to Dropbox in the format it expects to verify the request.
-	- Otherwise, forward the request to my webhook URI generated in Netlify, which triggers a build.
+- My custom endpoint (`https://netlibox.netlify.com/.netlify/functions/dropbox-webhook`) gets pinged by Dropbox - Is this a verification request? Send a response to Dropbox in the format it expects to verify the request. - Otherwise, forward the request to my webhook URI generated in Netlify, which triggers a build.
 
 ## Conclusion
 
@@ -86,5 +84,3 @@ Netlify is amazing for many reasons, but in this particular case, it gave me too
 In this particular case, Netlify gives me control over my build process such that I can abstract my content from my code then pull it in at build time. On top of that, I can automate the triggering of builds based on when a file is edited or saved, so I don’t have to worry about building/deploying a website. I just create and edit plain-text markdown files, and I can trust the current state of those files at any point in time represents my live website.
 
 Checkout [Netlibox on Github](https://github.com/jimniels/netlibox) to learn more or try this out yourself.
-
-
