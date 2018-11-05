@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jimniels/slog.git"
+    "url": "git+https://github.com/jimniels/netlibox.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jimniels/slog/issues"
+    "url": "https://github.com/jimniels/netlibox/issues"
   },
-  "homepage": "https://github.com/jimniels/slog#readme",
+  "homepage": "https://github.com/jimniels/netlibox#readme",
   "devDependencies": {
     "dotenv": "^6.0.0",
     "dropbox": "^4.0.5",
